@@ -20,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.menu_home);
+
+        mainBinding.bottomView.setItemIconTintList(null);
     }
 }

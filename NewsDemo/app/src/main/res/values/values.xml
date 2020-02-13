@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--去除BottomNavigationView选中字体放大效果-->
+    <dimen name="design_bottom_navigation_active_text_size">14dp</dimen>
+    <dimen name="design_bottom_navigation_text_size">14dp</dimen>
+</resources>
