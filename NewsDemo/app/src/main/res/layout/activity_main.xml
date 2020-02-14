@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="1000dp"
                 android:text="FrameLayout" />
         </FrameLayout>
 
@@ -43,6 +44,7 @@
             android:background="@android:color/white"
             app:itemTextColor="@drawable/selector_tab_color"
             app:labelVisibilityMode="labeled"
+            app:layout_behavior="com.zp.newsdemo.utils.BottomNavigationBehavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/tab_menu"
             tools:ignore="MissingConstraints">

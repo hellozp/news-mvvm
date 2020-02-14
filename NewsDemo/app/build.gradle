@@ -24,9 +24,12 @@ android {
 }
 
 dependencies {
+    implementation project(":library_base")
+
     implementation "androidx.appcompat:appcompat:$project.andriodXVersion"
     implementation "androidx.constraintlayout:constraintlayout:$project.constraintlayoutVersionn"
     implementation "com.google.android.material:material:$project.andriodXVersion"
 
-    implementation project(":library_base")
+    implementation 'q.rorbin:badgeview:1.1.3'
+
 }
