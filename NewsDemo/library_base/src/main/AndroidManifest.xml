@@ -1,2 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zp.library_base" />
+    package="com.zp.library_base">
+
+    <application>
+        <activity android:name=".activity.MvvmActivity"></activity>
+    </application>
+
+</manifest>

@@ -2,4 +2,6 @@
     <string name="app_name">library_base</string>
     <string name="share">分享</string>
 
+    <string name="fine_no_data">fine, no data.</string>
+    <string name="click_me_to_retry">click me to retry!</string>
 </resources>
