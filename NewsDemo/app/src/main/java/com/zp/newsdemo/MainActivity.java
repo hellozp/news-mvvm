@@ -1,7 +1,11 @@
 package com.zp.newsdemo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModel;
 
 import android.os.Bundle;
@@ -11,13 +15,25 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.zp.library_base.activity.MvvmActivity;
 import com.zp.library_base.viewmodel.MvvmBaseViewModel;
 import com.zp.newsdemo.databinding.ActivityMainBinding;
+import com.zp.newsdemo.fragment.AccountFragment;
+import com.zp.newsdemo.fragment.CategotiesFragment;
+import com.zp.newsdemo.fragment.HomeFragment;
+import com.zp.newsdemo.fragment.ServiceFragment;
 
 import q.rorbin.badgeview.QBadgeView;
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
+
+    private HomeFragment homeFragment = new HomeFragment();
+    private CategotiesFragment categotiesFragment = new CategotiesFragment();
+    private ServiceFragment serviceFragment = new ServiceFragment();
+    private AccountFragment accountFragment = new AccountFragment();
+
+    private Fragment fromFragment = homeFragment;//default init fragment
 
     @Override
     public int getLayoutId() {
@@ -49,6 +65,40 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
 
         //显示角标
         showBadgeView(2, 5);
+
+        //init fragment show
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(viewDataBinding.container.getId(), homeFragment);
+        fragmentTransaction.commit();
+
+        viewDataBinding.bottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment = null;
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_home:
+                        fragment = homeFragment;
+                        break;
+                    case R.id.menu_categories:
+                        fragment = categotiesFragment;
+                        break;
+                    case R.id.menu_service:
+                        fragment = serviceFragment;
+                        break;
+                    case R.id.menu_account:
+                        fragment = accountFragment;
+                        break;
+                }
+
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(menuItem.getTitle());
+                }
+                //切换Fragment
+                switchFragment(fromFragment, fragment);
+
+                return true;
+            }
+        });
     }
 
     @Override
@@ -88,5 +138,27 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
                     .setGravityOffset(spaceWidth + 50, 13, false)
                     .setBadgeText(showNumber + "");
         }
+    }
+
+    private void switchFragment(Fragment from, Fragment to) {
+        if (from != to) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            if (!to.isAdded()) {
+                if (from != null) {
+                    fragmentTransaction.hide(from);
+                }
+                if (to != null) {
+                    fragmentTransaction.add(viewDataBinding.container.getId(), to).commit();
+                }
+            } else {
+                if (from != null) {
+                    fragmentTransaction.hide(from);
+                }
+                if (to != null) {
+                    fragmentTransaction.show(to).commit();
+                }
+            }
+        }
+        fromFragment = to;
     }
 }

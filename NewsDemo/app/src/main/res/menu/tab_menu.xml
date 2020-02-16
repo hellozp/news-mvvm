@@ -2,17 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_home"
         android:icon="@drawable/selector_icon_home"
         android:title="@string/menu_home" />
     <item
-        android:id="@+id/secondFragment"
+        android:id="@+id/menu_categories"
         android:icon="@drawable/selector_icon_service"
-        android:title="@string/menu_services" />
-    <item
-        android:icon="@drawable/selector_icon_categories"
         android:title="@string/menu_categories" />
     <item
-        android:id="@+id/mineFragment"
+        android:id="@+id/menu_service"
+        android:icon="@drawable/selector_icon_categories"
+        android:title="@string/menu_services" />
+    <item
+        android:id="@+id/menu_account"
         android:icon="@drawable/selector_icon_account"
         android:title="@string/menu_account" />
 </menu>

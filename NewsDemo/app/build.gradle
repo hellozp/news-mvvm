@@ -31,5 +31,4 @@ dependencies {
     implementation "com.google.android.material:material:$project.andriodXVersion"
 
     implementation 'q.rorbin:badgeview:1.1.3'
-
 }
