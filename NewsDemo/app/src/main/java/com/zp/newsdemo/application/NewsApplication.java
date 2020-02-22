@@ -1,5 +1,6 @@
 package com.zp.newsdemo.application;
 
+import com.billy.cc.core.component.CC;
 import com.kingja.loadsir.core.LoadSir;
 import com.zp.library_base.BaseApplication;
 import com.zp.library_base.loadsir.CustomCallback;
@@ -32,5 +33,9 @@ public class NewsApplication extends BaseApplication {
                 .addCallback(new CustomCallback())
                 .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
+
+        CC.enableDebug(BuildConfig.DEBUG); // 默认是false: 开启debug模式
+        CC.enableVerboseLog(BuildConfig.DEBUG);	// 默认是false: 开启CC调用日志跟踪
+        CC.enableRemoteCC(BuildConfig.DEBUG); // 默认是false: 开启跨app组件调用
     }
 }

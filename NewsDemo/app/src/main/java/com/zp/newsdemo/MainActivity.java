@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.billy.cc.core.component.CC;
+import com.billy.cc.core.component.CCResult;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.zp.library_base.activity.MvvmActivity;
@@ -17,19 +19,18 @@ import com.zp.library_base.viewmodel.MvvmBaseViewModel;
 import com.zp.newsdemo.databinding.ActivityMainBinding;
 import com.zp.newsdemo.fragment.AccountFragment;
 import com.zp.newsdemo.fragment.CategotiesFragment;
-import com.zp.newsdemo.fragment.HomeFragment;
 import com.zp.newsdemo.fragment.ServiceFragment;
 
 import q.rorbin.badgeview.QBadgeView;
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
 
-    private HomeFragment homeFragment = new HomeFragment();
+    private Fragment homeFragment;
     private CategotiesFragment categotiesFragment = new CategotiesFragment();
     private ServiceFragment serviceFragment = new ServiceFragment();
     private AccountFragment accountFragment = new AccountFragment();
 
-    private Fragment fromFragment = homeFragment;//default init fragment
+    private Fragment fromFragment;//default init fragment
 
     @Override
     public int getLayoutId() {
@@ -49,23 +50,9 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Set ToolBar
-        setSupportActionBar(viewDataBinding.toolBar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.menu_home);
-
-        //取消默认的tab图标填充效果
-        viewDataBinding.bottomView.setItemIconTintList(null);
-
-        //显示角标
-        showBadgeView(2, 5);
-
-        //init fragment show
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(viewDataBinding.container.getId(), homeFragment);
-        fragmentTransaction.commit();
+        initToolBar();
+        initBottomNavigationView();
+        initFragment();
 
         viewDataBinding.bottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -95,6 +82,37 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
                 return true;
             }
         });
+    }
+
+    private void initToolBar() {
+        //Set ToolBar
+        setSupportActionBar(viewDataBinding.toolBar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.menu_home);
+    }
+
+    private void initBottomNavigationView() {
+        //取消默认的tab图标填充效果
+        viewDataBinding.bottomView.setItemIconTintList(null);
+
+        //显示角标
+        showBadgeView(2, 5);
+    }
+
+    private void initFragment() {
+        //同步调用，直接返回结果
+        CCResult result = CC.obtainBuilder("News")
+                .setActionName("getHeadlineNewsFragment")
+                .build()
+                .call();
+        homeFragment = (Fragment) result.getDataMap().get("fragment");
+        fromFragment = homeFragment;
+
+        //init fragment show
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(viewDataBinding.container.getId(), homeFragment);
+        fragmentTransaction.commit();
     }
 
     @Override

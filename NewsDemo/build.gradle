@@ -10,6 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.billy.android:cc-register:1.1.2' //cc demo中版本
     }
 }
 
@@ -26,11 +27,16 @@ task clean(type: Delete) {
 }
 
 //统一版本管理
-project.ext.set("minSdkVersion", "21")
-project.ext.set("compileSdkVersion", "29")
-project.ext.set("buildToolsVersion", "29.0.0")
-project.ext.set("targetSdkVersion", "29")
-project.ext.set("versionCode", "10001")
-project.ext.set("versionName", "1.0.0.0.1")
-project.ext.set("constraintlayoutVersionn", "1.1.3")
-project.ext.set("andriodXVersion", "1.0.0")
+ext {
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.0'
+    minSdkVersion = 21
+    targetSdkVersion = 29
+    versionCode = 10001
+    versionName = '1.0.0.0.1'
+
+    constraintlayoutVersionn = '1.1.3'
+    andriodXVersion = '1.0.0'
+}
+
+

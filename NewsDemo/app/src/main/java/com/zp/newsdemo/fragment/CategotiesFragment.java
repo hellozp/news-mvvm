@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.zp.newsdemo.R;
-import com.zp.newsdemo.databinding.FragmentHomeBinding;
 import com.zp.newsdemo.databinding.FragmentOthersBinding;
 
 
