@@ -29,9 +29,7 @@ dependencies {
     implementation project(":library_base")
     addComponent 'library_news' //会默认添加依赖：project(':library_news')
 
-//    implementation "androidx.appcompat:appcompat:$rootProject.andriodXVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayoutVersionn"
-    implementation "com.google.android.material:material:$rootProject.andriodXVersion"
 
     implementation 'q.rorbin:badgeview:1.1.3'
 }

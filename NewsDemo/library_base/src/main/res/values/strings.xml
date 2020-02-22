@@ -4,4 +4,7 @@
 
     <string name="fine_no_data">fine, no data.</string>
     <string name="click_me_to_retry">click me to retry!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -25,7 +25,9 @@ android {
 
 dependencies {
     api "androidx.appcompat:appcompat:$rootProject.andriodXVersion"
+    api "com.google.android.material:material:$rootProject.andriodXVersion"
 
     api "com.kingja.loadsir:loadsir:1.3.6"
     implementation "com.airbnb.android:lottie:2.8.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
