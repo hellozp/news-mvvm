@@ -1,5 +1,7 @@
 package com.zp.library_news.headlinenews;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -9,10 +11,13 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.material.tabs.TabLayout;
 import com.zp.library_base.fragment.MvvmFragment;
 import com.zp.library_base.viewmodel.MvvmBaseViewModel;
 import com.zp.library_news.R;
-import com.zp.library_news.databinding.FragmentNewsBinding;
+import com.zp.library_news.databinding.FragmentHeadlinenewsBinding;
+
+import java.util.ArrayList;
 
 /**
  * author : zp
@@ -21,22 +26,33 @@ import com.zp.library_news.databinding.FragmentNewsBinding;
  * desc : 首页-新闻列表
  * version: 1.0
  */
-public class NewsFragment extends MvvmFragment<FragmentNewsBinding, MvvmBaseViewModel> {
-    FragmentNewsBinding mBinding;
+public class HeadlineNewsFragment extends MvvmFragment<FragmentHeadlinenewsBinding, HeadlineNewsViewModel> implements HeadlineNewsViewModel.IMainView {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_news;
+        return R.layout.fragment_headlinenews;
     }
 
     @Override
-    protected MvvmBaseViewModel getViewModel() {
-        return null;
+    protected HeadlineNewsViewModel getViewModel() {
+        return new HeadlineNewsViewModel();
     }
 
     @Override
     protected int getBindingVariable() {
         return 0;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        viewDataBinding.tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        initChannnel();
+    }
+
+    private void initChannnel(){
+
     }
 
     @Override
@@ -46,8 +62,9 @@ public class NewsFragment extends MvvmFragment<FragmentNewsBinding, MvvmBaseView
 
     @Override
     protected String getFragmentTag() {
-        return "NewsFragment";
+        return "HeadlineNewsFragment";
     }
+
 
     @Override
     public void showContent() {
@@ -66,6 +83,11 @@ public class NewsFragment extends MvvmFragment<FragmentNewsBinding, MvvmBaseView
 
     @Override
     public void onRefreshFailure(String errMsg) {
+
+    }
+
+    @Override
+    public void onChannelsLoaded(ArrayList<ChannelModel.Channel> channels) {
 
     }
 }

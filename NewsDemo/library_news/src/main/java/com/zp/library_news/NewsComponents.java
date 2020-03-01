@@ -3,7 +3,8 @@ package com.zp.library_news;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.zp.library_news.headlinenews.NewsFragment;
+import com.zp.library_news.headlinenews.HeadlineNewsFragment;
+import com.zp.library_news.headlinenews.HeadlineNewsFragment;
 
 /**
  * author : zp
@@ -24,7 +25,7 @@ public class NewsComponents implements IComponent {
         switch (cc.getActionName()) {
             case "getHeadlineNewsFragment"://APP首页新闻列表fragment
                 CCResult ccResult = new CCResult();
-                ccResult.addData("fragment", new NewsFragment());
+                ccResult.addData("fragment", new HeadlineNewsFragment());
                 //返回处理结果给调用方
                 CC.sendCCResult(cc.getCallId(), ccResult);
                 //同步方式实现（在return之前听过CC.sendCCResult()返回组件调用结果），return false

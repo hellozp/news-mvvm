@@ -8,6 +8,7 @@ import com.zp.library_base.loadsir.EmptyCallback;
 import com.zp.library_base.loadsir.ErrorCallback;
 import com.zp.library_base.loadsir.LoadingCallback;
 import com.zp.library_base.loadsir.TimeoutCallback;
+import com.zp.library_network.ApiBase;
 import com.zp.newsdemo.BuildConfig;
 
 /**
@@ -34,8 +35,12 @@ public class NewsApplication extends BaseApplication {
                 .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
 
+        //CC初始化
         CC.enableDebug(BuildConfig.DEBUG); // 默认是false: 开启debug模式
-        CC.enableVerboseLog(BuildConfig.DEBUG);	// 默认是false: 开启CC调用日志跟踪
+        CC.enableVerboseLog(BuildConfig.DEBUG);    // 默认是false: 开启CC调用日志跟踪
         CC.enableRemoteCC(BuildConfig.DEBUG); // 默认是false: 开启跨app组件调用
+
+        //请求头初始化
+        ApiBase.setNetworkRequestInfo(new NetworkRequestInfo());
     }
 }

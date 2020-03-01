@@ -4,6 +4,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
+
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
@@ -17,17 +18,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
-        enabled true
+        enabled true;
     }
 
 }
 
 dependencies {
-    api "androidx.appcompat:appcompat:$rootProject.andriodXVersion"
-    api "com.google.android.material:material:$rootProject.andriodXVersion"
+    api project(":library_base")
 
-    api "com.kingja.loadsir:loadsir:1.3.6"
-    implementation "com.airbnb.android:lottie:2.8.0"
-//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //网络框架Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    api 'com.google.code.gson:gson:2.8.2'
 }
