@@ -13,7 +13,7 @@ import okhttp3.ResponseBody;
  * author : zp
  * e-mail :
  * time : 2020-02-22 20:09
- * desc :
+ * desc : 响应拦截器
  * version: 1.0
  */
 public class ResponseInterceptor implements Interceptor {

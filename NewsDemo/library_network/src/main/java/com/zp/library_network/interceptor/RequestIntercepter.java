@@ -14,7 +14,7 @@ import okhttp3.Response;
  * author : zp
  * e-mail :
  * time : 2020-02-22 20:09
- * desc :
+ * desc : 请求拦截器
  * version: 1.0
  */
 public class RequestIntercepter implements Interceptor {
