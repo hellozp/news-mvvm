@@ -1,19 +1,13 @@
 package com.zp.library_news.headlinenews;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.databinding.DataBindingUtil;
 
 import com.google.android.material.tabs.TabLayout;
 import com.zp.library_base.fragment.MvvmFragment;
-import com.zp.library_base.viewmodel.MvvmBaseViewModel;
 import com.zp.library_news.R;
 import com.zp.library_news.databinding.FragmentHeadlinenewsBinding;
 
@@ -51,6 +45,9 @@ public class HeadlineNewsFragment extends MvvmFragment<FragmentHeadlinenewsBindi
         initChannnel();
     }
 
+    /**
+     * tabLayout初始化
+     */
     private void initChannnel(){
 
     }

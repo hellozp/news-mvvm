@@ -1,5 +1,7 @@
 package com.zp.library_base.model;
 
+import androidx.annotation.CallSuper;
+
 /**
  * author : zp
  * e-mail :
@@ -7,6 +9,8 @@ package com.zp.library_base.model;
  * desc :
  * version: 1.0
  */
-public class SuperBaseModel {
-
+public abstract class SuperBaseModel {
+    //    @CallSuper
+    public void cancel() {
+    }
 }

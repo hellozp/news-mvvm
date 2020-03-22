@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.billy.android:cc:2.1.5@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-cc-2.1.5.aar/2ee4538cf1ef8e2a694609ef0b603571/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-cc-2.1.5.aar/2ee4538cf1ef8e2a694609ef0b603571/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.billy.android/cc/2.1.5/4b92d5226d3715509db152ec6f6813f163628412/cc-2.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

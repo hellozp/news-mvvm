@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../NewsDemo.iml" filepath="$PROJECT_DIR$/../NewsDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_base/library_base.iml" filepath="$PROJECT_DIR$/../library_base/library_base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_network/library_network.iml" filepath="$PROJECT_DIR$/../library_network/library_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_news/library_news.iml" filepath="$PROJECT_DIR$/../library_news/library_news.iml" />
+    </modules>
+  </component>
+</project>
