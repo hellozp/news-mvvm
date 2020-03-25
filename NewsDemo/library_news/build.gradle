@@ -20,6 +20,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     dataBinding {
         enabled true;
     }
@@ -28,6 +33,8 @@ android {
 
 dependencies {
     implementation project(":library_network")
+    implementation project(":library_common")
+
     //网络刷新库
     implementation  'com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1'      //核心必须依赖
     implementation  'com.scwang.smart:refresh-header-classics:2.0.0-alpha-1'    //经典刷新头

@@ -16,5 +16,5 @@ public class BaseResponse {
     public Integer showapiResCode;
     @SerializedName("showapi_res_error")
     @Expose
-    public Integer showapiResError;
+    public String showapiResError;
 }

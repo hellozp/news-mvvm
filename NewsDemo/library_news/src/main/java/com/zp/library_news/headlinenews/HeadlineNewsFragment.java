@@ -1,6 +1,7 @@
 package com.zp.library_news.headlinenews;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.tabs.TabLayout;
 import com.zp.library_base.fragment.MvvmFragment;
+import com.zp.library_base.utils.GsonUtils;
 import com.zp.library_news.R;
 import com.zp.library_news.databinding.FragmentHeadlinenewsBinding;
 
@@ -21,6 +23,7 @@ import java.util.ArrayList;
  * version: 1.0
  */
 public class HeadlineNewsFragment extends MvvmFragment<FragmentHeadlinenewsBinding, HeadlineNewsViewModel> implements HeadlineNewsViewModel.IMainView {
+    HeadlineNewsFragmentAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -42,14 +45,38 @@ public class HeadlineNewsFragment extends MvvmFragment<FragmentHeadlinenewsBindi
         super.onViewCreated(view, savedInstanceState);
 
         viewDataBinding.tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        initChannnel();
+
+        //发起数据获取  VM——M.get——callBack——V
+        viewModel.refresh();
+
+        initChannelList();
     }
 
     /**
      * tabLayout初始化
      */
-    private void initChannnel(){
+    private void initChannelList() {
+        mAdapter = new HeadlineNewsFragmentAdapter(getChildFragmentManager());
+        viewDataBinding.viewpager.setAdapter(mAdapter);
+        viewDataBinding.viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(viewDataBinding.tablayout));
+        viewDataBinding.viewpager.setOffscreenPageLimit(1);
+        //绑定tab点击事件
+        viewDataBinding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewDataBinding.viewpager.setCurrentItem(tab.getPosition());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
@@ -62,29 +89,20 @@ public class HeadlineNewsFragment extends MvvmFragment<FragmentHeadlinenewsBindi
         return "HeadlineNewsFragment";
     }
 
-
-    @Override
-    public void showContent() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void onRefreshEmpty() {
-
-    }
-
-    @Override
-    public void onRefreshFailure(String errMsg) {
-
-    }
-
+    /**
+     * 获取数据回调
+     *
+     * @param channels
+     */
     @Override
     public void onChannelsLoaded(ArrayList<ChannelModel.Channel> channels) {
+        Log.d("well", "HeadlineNewsFragment数据--" + GsonUtils.toJson(channels));
 
+        mAdapter.setChannels(channels);
+        viewDataBinding.tablayout.removeAllTabs();
+        for (ChannelModel.Channel channel : channels) {
+            viewDataBinding.tablayout.addTab(viewDataBinding.tablayout.newTab().setText(channel.channelName));
+        }
+        viewDataBinding.tablayout.scrollTo(0, 0);
     }
 }

@@ -8,6 +8,7 @@ import com.zp.library_base.loadsir.EmptyCallback;
 import com.zp.library_base.loadsir.ErrorCallback;
 import com.zp.library_base.loadsir.LoadingCallback;
 import com.zp.library_base.loadsir.TimeoutCallback;
+import com.zp.library_base.preference.PreferencesUtil;
 import com.zp.library_network.ApiBase;
 import com.zp.newsdemo.BuildConfig;
 
@@ -22,6 +23,8 @@ public class NewsApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        PreferencesUtil.init(this);
 
         setDebug(BuildConfig.DEBUG);//注意要使用NewsApplication的BuildConfig
 

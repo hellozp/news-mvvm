@@ -7,6 +7,10 @@ import com.zp.library_network.interceptor.ResponseInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -35,11 +39,11 @@ public class ApiBase {
     private static ErrorTransformer sErrorTransformer = new ErrorTransformer();
 
     protected ApiBase(String baseUrl) {
-
         retrofit = new Retrofit
                 .Builder()
-                .client(getOkHttpClient())//实例化OkHttpClent
-                .baseUrl(baseUrl)//主机地址
+                .client(getOkHttpClient())
+                .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

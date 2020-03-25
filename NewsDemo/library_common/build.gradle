@@ -18,6 +18,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -26,22 +27,9 @@ android {
     dataBinding {
         enabled true;
     }
-
 }
 
 dependencies {
-    api project(":library_base")
-
-    //网络框架Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    implementation 'com.google.code.gson:gson:2.8.2'
-
-    //引入rxjava适配器，方便rxjava与retrofit的结合
-    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    //引入rxandroid
-    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    api 'io.reactivex:rxandroid:1.2.1'
+    implementation project(":library_base")
+    api 'com.github.bumptech.glide:glide:4.7.1'
 }

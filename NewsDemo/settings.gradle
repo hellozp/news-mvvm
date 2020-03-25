@@ -1,1 +1,1 @@
-include ':app', ':library_base', ':library_news', ':library_network'
+include ':app', ':library_base', ':library_news', ':library_network', ':library_common'
