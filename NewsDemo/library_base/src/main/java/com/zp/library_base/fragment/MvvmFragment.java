@@ -69,7 +69,9 @@ public abstract class MvvmFragment<V extends ViewDataBinding, VM extends MvvmBas
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //viewModel赋值
         viewModel = getViewModel();
+        //vm操作绑定view
         if (viewModel != null) {
             viewModel.attachUI(this);
         }
@@ -94,6 +96,7 @@ public abstract class MvvmFragment<V extends ViewDataBinding, VM extends MvvmBas
     @Override
     public void onDetach() {
         super.onDetach();
+        //解绑view，避免内存泄露
         if (viewModel != null && viewModel.isUIAttached()) {
             viewModel.detachUI();
         }

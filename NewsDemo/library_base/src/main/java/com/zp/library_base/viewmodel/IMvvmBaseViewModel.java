@@ -9,11 +9,24 @@ package com.zp.library_base.viewmodel;
  */
 public interface IMvvmBaseViewModel<V> {
 
+    /**
+     * init the view
+     *
+     * @param view
+     */
     void attachUI(V view);
 
+    /**
+     * get the view for VM
+     *
+     * @return
+     */
     V getPageView();
 
     boolean isUIAttached();
 
+    /**
+     * won't oom when onDestory、onDetach
+     */
     void detachUI();
 }

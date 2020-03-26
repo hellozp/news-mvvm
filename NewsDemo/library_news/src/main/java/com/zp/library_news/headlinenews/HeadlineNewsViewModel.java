@@ -11,7 +11,7 @@ import java.util.List;
  * author : zp
  * e-mail :
  * time : 2020-02-29 17:39
- * desc : VM层用来获取获取频道数据
+ * desc : VM层同时持有view和model。用来获取获取频道数据
  * 思路：衔接model层与view层，ChannelModel中发起数据获取——>调用基类提供的公共方法getCachedDataAndLoad()——>定义接口用于view层实现获取回调
  * version: 1.0
  */
