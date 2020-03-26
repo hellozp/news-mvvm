@@ -33,6 +33,7 @@ public abstract class MvvmFragment<V extends ViewDataBinding, VM extends MvvmBas
     protected V viewDataBinding;
     private LoadService loadService;
     private boolean isShowedContent;
+    protected String mFragmentTag = "";
 
     protected abstract
     @LayoutRes
@@ -54,7 +55,7 @@ public abstract class MvvmFragment<V extends ViewDataBinding, VM extends MvvmBas
     /**
      * 初始化参数
      */
-    private void initParameters() {
+    protected void initParameters() {
 
     }
 
@@ -185,9 +186,14 @@ public abstract class MvvmFragment<V extends ViewDataBinding, VM extends MvvmBas
         Toast.makeText(getContext(), "没有更多数据了", Toast.LENGTH_SHORT).show();
     }
 
-    public void setLoadSir() {
+    /**
+     * 初始化loadSir
+     *
+     * @param view 要被控制的视图目标对象
+     */
+    public void setLoadSir(View view) {
         // Your can change the callback on sub thread directly.
-        loadService = LoadSir.getDefault().register(this, new Callback.OnReloadListener() {
+        loadService = LoadSir.getDefault().register(view, new Callback.OnReloadListener() {
             @Override
             public void onReload(View v) {
                 // 重新加载逻辑
